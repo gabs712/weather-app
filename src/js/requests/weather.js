@@ -19,7 +19,7 @@ const visualCrossing = (() => {
     const data = await fetchLocation(location, unit)
     const processed = {}
 
-    processed.adress = data.resolvedAddress
+    processed.address = data.resolvedAddress
     processed.description = data.description
     processed.condition = data.currentConditions.conditions
     processed.temp = data.currentConditions.temp
