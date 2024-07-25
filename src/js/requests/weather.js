@@ -11,6 +11,7 @@ const visualCrossing = (() => {
     if (!response.ok) {
       throw new Error(`Failed to retrieve data: ${response.status}`)
     }
+
     return response.json()
   }
 
@@ -31,8 +32,8 @@ const visualCrossing = (() => {
 })()
 
 const weatherData = (() => {
-  const get = async (location, unit = 'celsius') => {
-    const APIData = await visualCrossing.processData(location, unit)
+  const get = (location, unit = 'celsius') => {
+    const APIData = visualCrossing.processData(location, unit)
     return APIData
   }
 
