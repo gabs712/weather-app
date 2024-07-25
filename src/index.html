@@ -9,11 +9,14 @@
     class="grid min-h-svh place-content-center bg-gradient-to-br from-cyan-400 via-blue-400 to-sky-400 text-gray-50 [&_*:focus]:outline-none [&_*:focus]:ring [&_*:focus]:ring-sky-600"
   >
     <main
-      class=" w-72 rounded-md bg-black bg-opacity-[0.025] px-3 py-3 shadow-lg"
+      class="w-72 rounded-md bg-black bg-opacity-[0.025] px-3 py-3 shadow-lg"
     >
       <form action="">
-        <div class="flex flex-col gap-1">
-          <label class="text-xs font-bold" for="search">Location</label>
+        <div class="flex flex-col gap-1.5">
+          <div class="flex min-h-[1lh] justify-between gap-8 text-xs">
+            <label class="flex-none font-bold" for="search">Location</label>
+            <div class="hidden font-bold text-white">Loading...</div>
+          </div>
           <div class="flex gap-3">
             <input
               placeholder="Search..."
@@ -40,13 +43,13 @@
             BH, Brasil, America
           </h2>
           <button
-            class="grid size-6 shrink-0 place-content-center rounded-full bg-blue-500/60 shadow-sm text-xs font-bold tracking-wider"
+            class="grid size-6 shrink-0 place-content-center rounded-full bg-cyan-500 text-xs font-bold tracking-wider shadow hover:bg-slate-100 hover:text-cyan-500"
           >
             ºF
           </button>
         </div>
         <div class="mt-4 flex justify-center gap-5">
-          <div class="text-7xl min-h-[1lh] tracking-tighter">14ºF</div>
+          <div class="min-h-[1lh] text-7xl tracking-tighter">32ºC</div>
           <div class="">
             <img
               class="size-12"
@@ -57,8 +60,10 @@
           </div>
         </div>
         <div class="mt-3">
-          <h3 data-condition class="font-bold min-h-[1lh] leading-tight">It's foggy</h3>
-          <p data-description class="text-md min-h-[1lh] mt-2">
+          <h3 data-condition class="min-h-[1lh] font-bold leading-tight">
+            It's foggy
+          </h3>
+          <p data-description class="text-md mt-2 min-h-[1lh]">
             Man, it is super foggy, go home immediately! right now!
           </p>
         </div>
