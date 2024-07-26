@@ -1,5 +1,5 @@
-const giphyAPI = (() => {
-  const fetchGif = async (search) => {
+const GiphyAPI = (search) => {
+  const fetchGif = async () => {
     let response = await fetch(
       `https://api.giphy.com/v1/gifs/translate?api_key=tb2p9L7ZWNWzOGaqoJE2ktAST2U8mQG2&s=${search}`,
     )
@@ -17,21 +17,21 @@ const giphyAPI = (() => {
     return response
   }
 
-  const getUrl = async (search) => {
-    const data = await fetchGif(search)
+  const getUrl = async () => {
+    const data = await fetchGif()
     return data.data.images.original.url
   }
 
   return { getUrl }
-})()
+}
 
-const gifData = (() => {
-  const getUrl = (search) => {
-    const url = giphyAPI.getUrl(search)
+const Gif = (search) => {
+  const getUrl = () => {
+    const url = GiphyAPI(search).getUrl()
     return url
   }
 
   return { getUrl }
-})()
+}
 
-export default gifData
+export default Gif
