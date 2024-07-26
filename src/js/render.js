@@ -1,9 +1,13 @@
+const weatherInfoDiv = document.querySelector('[data-weather-info-div]')
+const SYMBOLS = {
+  fahrenheit: 'ºF',
+  celsius: 'ºC',
+}
+
 const WeatherTemplate = (weatherInfo, gifUrl, unit) => {
-  const weatherInfoDiv = document.querySelector('[data-weather-info-div]')
+  const unitSymbol = SYMBOLS[unit]
 
-  const getTemplate = () => {
-    const unitSymbol = unit === 'fahrenheit' ? 'ºF' : 'ºC'
-
+  const getTemplate = async () => {
     const template = `
       <div class="mt-3 text-white">
         <div class="flex min-h-[1lh] justify-between gap-5">
@@ -16,7 +20,7 @@ const WeatherTemplate = (weatherInfo, gifUrl, unit) => {
           <button
             class="grid size-6 shrink-0 place-content-center rounded-full bg-cyan-500 text-xs font-bold tracking-wider shadow hover:bg-slate-100 hover:text-cyan-500"
           >
-            ºF
+            ${unitSymbol === SYMBOLS.fahrenheit ? SYMBOLS.celsius : SYMBOLS.fahrenheit}
           </button>
         </div>
         <div class="mt-4 flex justify-center gap-5">
@@ -27,7 +31,7 @@ const WeatherTemplate = (weatherInfo, gifUrl, unit) => {
             <img
               class="size-12"
               data-icon
-              src="assets/weather-icons/${weatherInfo.icon}.png"
+              src="${(await import(`../assets/weather-icons/${weatherInfo.icon}.png`)).default}"
               alt=""
             />
           </div>
@@ -52,9 +56,13 @@ const WeatherTemplate = (weatherInfo, gifUrl, unit) => {
     return template
   }
 
-  const render = () => {
+  const clear = () => {
     weatherInfoDiv.innerHTML = ''
-    weatherInfoDiv.append(getTemplate())
+  }
+
+  const render = async () => {
+    clear()
+    weatherInfoDiv.innerHTML = await getTemplate()
   }
 
   return { render }
