@@ -11,14 +11,16 @@
     <main
       class="w-72 rounded-md bg-black bg-opacity-[0.025] px-3 py-3 shadow-lg"
     >
-      <form action="">
+      <form data-form action="">
         <div class="flex flex-col gap-1.5">
           <div class="flex min-h-[1lh] justify-between gap-8 text-xs">
             <label class="flex-none font-bold" for="search">Location</label>
-            <div class="hidden font-bold text-white">Loading...</div>
+            <div data-message-div class="font-bold text-white"></div>
           </div>
           <div class="flex gap-3">
             <input
+              autofocus
+              data-input-div
               placeholder="Search..."
               autocomplete="off"
               type="search"

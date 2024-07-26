@@ -1,7 +1,6 @@
 const state = {
-  initial: true,
-  address: null,
-  unit: 'fahrenheit',
+  search: null,
+  unit: 'celsius',
 }
 
 export default state

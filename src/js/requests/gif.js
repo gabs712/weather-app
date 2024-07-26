@@ -1,25 +1,31 @@
 const GiphyAPI = (search) => {
-  const fetchGif = async () => {
+  const fetchData = async () => {
     let response = await fetch(
       `https://api.giphy.com/v1/gifs/translate?api_key=tb2p9L7ZWNWzOGaqoJE2ktAST2U8mQG2&s=${search}`,
     )
 
     if (!response.ok) {
-      throw new Error(`Failed to retrieve data: ${response.status}`)
+      throw new Error('Something went wrong while loading the Gif')
     }
-    response = response.json()
+    response = await response.json()
 
     // response.data comes as an array if there's no matching results
     if (Array.isArray(response.data)) {
-      throw new Error('gif not found')
+      throw new Error('Gif not found')
     }
 
     return response
   }
 
   const getUrl = async () => {
-    const data = await fetchGif()
-    return data.data.images.original.url
+    let url
+    try {
+      url = (await fetchData()).data.images.original.url
+    } catch (e) {
+      console.log(e.message)
+      url = undefined
+    }
+    return url
   }
 
   return { getUrl }

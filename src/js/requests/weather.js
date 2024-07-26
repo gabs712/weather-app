@@ -8,8 +8,10 @@ const VisualCrossing = (location, unit) => {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=25GZYCXST5KXJ5NU527RPYTV2&unitGroup=${unit}`,
     )
 
-    if (!response.ok) {
-      throw new Error(`Failed to retrieve data: ${response.status}`)
+    if (response.status === 400) {
+      throw new Error('Invalid location')
+    } else if (!response.ok) {
+      throw new Error('Something went wrong')
     }
 
     return response.json()
@@ -32,7 +34,7 @@ const VisualCrossing = (location, unit) => {
 }
 
 const Weather = (location, unit) => {
-  const getData = () => {
+  const getData = async () => {
     const APIData = VisualCrossing(location, unit).processData()
     return APIData
   }
