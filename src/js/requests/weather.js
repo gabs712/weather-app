@@ -1,5 +1,5 @@
-const visualCrossing = (() => {
-  const fetchLocation = async (location, unit) => {
+const VisualCrossing = (location, unit) => {
+  const fetchLocation = async () => {
     // 'metric' is celsius, 'us' is fahrenheit and 'base' is kelvin
     if (unit === 'fahrenheit') unit = 'us'
     else if (unit === 'celsius') unit = 'metric'
@@ -15,8 +15,8 @@ const visualCrossing = (() => {
     return response.json()
   }
 
-  const processData = async (location, unit) => {
-    const data = await fetchLocation(location, unit)
+  const processData = async () => {
+    const data = await fetchLocation()
     const processed = {}
 
     processed.address = data.resolvedAddress
@@ -29,15 +29,15 @@ const visualCrossing = (() => {
   }
 
   return { processData }
-})()
+}
 
-const weatherData = (() => {
-  const get = (location, unit = 'celsius') => {
-    const APIData = visualCrossing.processData(location, unit)
+const Weather = (location, unit) => {
+  const getData = () => {
+    const APIData = VisualCrossing(location, unit).processData()
     return APIData
   }
 
-  return { get }
-})()
+  return { getData }
+}
 
-export default weatherData
+export default Weather
