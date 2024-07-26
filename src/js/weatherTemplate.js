@@ -20,6 +20,7 @@ const WeatherTemplate = (weatherInfo, gifUrl = notFoundGIF, unit) => {
             ${weatherInfo.address}
           </h2>
           <button
+            data-change-unit-div
             class="grid size-6 shrink-0 place-content-center rounded-full bg-cyan-500 text-xs font-bold tracking-wider shadow hover:bg-slate-100 hover:text-cyan-500"
           >
             ${unitSymbol === SYMBOLS.fahrenheit ? SYMBOLS.celsius : SYMBOLS.fahrenheit}

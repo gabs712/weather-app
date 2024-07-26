@@ -5,8 +5,6 @@ import WeatherTemplate from './weatherTemplate.js'
 import { renderWeather, renderMessage } from './render.js'
 
 const Search = (input) => {
-  state.search = input.value
-
   const refresh = async () => {
     try {
       renderMessage.loading()
@@ -31,16 +29,26 @@ const Search = (input) => {
     input.value = ''
   }
 
-  const submit = (e) => {
+  const submit = async (e) => {
+    state.search = input.value
+
     e.preventDefault()
-    refresh()
+    await refresh()
   }
 
-  return { submit }
+  return { submit, refresh }
 }
 
 const unit = (() => {
-  //
+  const toggle = () => {
+    if (state.unit === 'celsius') {
+      state.unit = 'fahrenheit'
+    } else {
+      state.unit = 'celsius'
+    }
+  }
+
+  return { toggle }
 })()
 
-export { Search }
+export { Search, unit }
