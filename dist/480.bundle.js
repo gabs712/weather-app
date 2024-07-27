@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[480],{480:(e,p,s)=>{e.exports=s.p+"assets/thunder-rain.png"}}]);
