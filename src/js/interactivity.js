@@ -1,3 +1,4 @@
+import { translateCondition } from './helpers.js'
 import Weather from './requests/weather.js'
 import Gif from './requests/gif.js'
 import state from './state.js'
@@ -10,7 +11,9 @@ const Search = (input) => {
       renderMessage.loading()
 
       const weatherInfo = await Weather(state.search, state.unit).getData()
-      const gifUrl = await Gif(weatherInfo.condition).getUrl()
+      const gifUrl = await Gif(
+        translateCondition(weatherInfo.condition),
+      ).getUrl()
       const template = await WeatherTemplate(
         weatherInfo,
         gifUrl,
