@@ -24,6 +24,7 @@ const Search = (input) => {
       renderMessage.clear()
       clearInput()
     } catch (e) {
+      state.search = state.previousSearch
       renderMessage.custom(e.message)
     }
   }
@@ -33,6 +34,7 @@ const Search = (input) => {
   }
 
   const submit = async (e) => {
+    state.previousSearch = state.search
     state.search = input.value
 
     e.preventDefault()
