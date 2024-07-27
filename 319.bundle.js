@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[319],{319:(e,p,s)=>{e.exports=s.p+"assets/wind.png"}}]);
